@@ -2,6 +2,7 @@ package com.example.artistascolombianos.controllers;
 
 import com.example.artistascolombianos.models.Artistas;
 import com.example.artistascolombianos.models.dto.ArtistasDTO;
+import com.example.artistascolombianos.models.dto.MuseosDTO;
 import com.example.artistascolombianos.services.ArtistaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +51,19 @@ public class ArtistaController {
     public Artistas getObrasColombia(@RequestParam int idArtistas){
         System.out.println(idArtistas);
         artistaService.getObrasColombia(idArtistas);
+        return null;
+    }
+
+    @GetMapping("/getMuseosCiudadL")
+    public Artistas getMuseosCiudadL(@RequestParam String ciudad){
+
+        artistaService.getMuseosCiudadL(ciudad);
+        return null;
+    }
+
+    @PostMapping("/postMuseo")
+    public ResponseEntity<Artistas> createMuseo(@RequestBody @Valid @NotNull @NotEmpty MuseosDTO MuseosDTO){
+        artistaService.createMuseo(MuseosDTO);
         return null;
     }
 }
